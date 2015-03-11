@@ -11,16 +11,17 @@
 		<br>Password: %s
 		<br>Gender: %s
 		<br>Color: %s
-		<br>Language(s): %s,
+		<br>Language(s): %s
 		<br>Comments: %s
 		<br>T&amp;C: %s',
-			$_POST['name'], 
-			$_POST['password'], 
-			$_POST['gender'], 
-			$_POST['color'],
-			implode(' ', $_POST['languages']), // implode displays all the elements of the array
-			$_POST['comments'],
-			$_POST['tc']);
+		//htmlspecialchars adds security to the form
+			htmlspecialchars($_POST['name']), 
+			htmlspecialchars($_POST['password']), 
+			htmlspecialchars($_POST['gender']), 
+			htmlspecialchars($_POST['color']),
+			htmlspecialchars(implode(' ', $_POST['languages'])), // implode displays all the elements of the array
+			htmlspecialchars($_POST['comments']),
+			htmlspecialchars($_POST['tc']));
 
 
 	}
