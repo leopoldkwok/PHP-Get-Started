@@ -4,6 +4,25 @@
 	<title>PHP</title>
 </head>
 <body>
+<?php
+	if(isset($_POST['submit'])) { // out put all the data 
+		// process form
+		printf('User name: %s
+		<br>Password: %s
+		<br>Gender: %s
+		<br>Color: %s
+		<br>Language(s): %s,
+		<br>Comments: %s
+		<br>T&amp;C: %s',
+			$_POST['name'], 
+			$_POST['password'], '', '', '',
+			$_POST['comments'], '');
+
+
+	}
+?>
+
+
 <form method="post" action="">
 	User name: <input type="text" name="name"><br>
 	Password: <input type="password" name="password"><br>
