@@ -15,8 +15,12 @@
 		<br>Comments: %s
 		<br>T&amp;C: %s',
 			$_POST['name'], 
-			$_POST['password'], '', '', '',
-			$_POST['comments'], '');
+			$_POST['password'], 
+			$_POST['gender'], 
+			$_POST['color'],
+			implode(' ', $_POST['languages']), // implode displays all the elements of the array
+			$_POST['comments'],
+			$_POST['tc']);
 
 
 	}
