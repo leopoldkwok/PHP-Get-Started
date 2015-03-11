@@ -99,8 +99,16 @@
 		echo htmlspecialchars($password); // prefilled the form fields
 	?>"><br>
 	Gender:
-		<input type="radio" name="gender" value="f">female
-		<input type="radio" name="gender" value="m">male<br>
+		<input type="radio" name="gender" value="f" <?php
+			if ($gender === 'f') {
+				echo 'checked';
+			}
+		?>>female
+		<input type="radio" name="gender" value="m" <?php
+			if ($gender === 'm') {
+				echo 'checked';
+			}
+		?>>male<br>
 	Favourite color:
 		<select name="color">
 			<option value="">Please select</option>
@@ -118,7 +126,11 @@
 		echo htmlspecialchars($comments); // prefilled the form fields
 		?></textarea><br>
 	</textarea><br>
-	<input type="checkbox" name="tc" value="ok">I accept the T&C<br>
+	<input type="checkbox" name="tc" value="ok" <?php 
+		if($tc === 'ok') {
+			echo ' checked';
+		}
+	?>>I accept the T&C<br>
 	<input type="submit" name="submit" value="Submit">
 </form>
 </body>
