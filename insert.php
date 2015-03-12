@@ -11,7 +11,7 @@
 
 
 	$name = '';
-	// $password = '';
+	$password = '';
 	// $comments = '';
 	$gender = '';
 	// $tc = '';
@@ -31,7 +31,12 @@
 			$name = $_POST['name'];
 		}
 
-	
+		if(!isset($_POST['password']) || $_POST['password'] === '') {
+			$ok = false;
+		} else {
+			$password = $_POST['password'];
+		}
+
 
 		if(!isset($_POST['gender']) || $_POST['gender'] === '') {
 			$ok = false;
@@ -52,11 +57,14 @@
 
 		
 		if($ok) {
+			$hash = password_hash($password, PASSWORD_DEFAULT); // password api
+
 			// add database code here
 			$db = mysqli_connect('localhost', 'root', '', 'php'); //connect to our database
-			$sql = sprintf("INSERT INTO users(name, gender, color) VALUES (
-				'%s','%s','%s'
+			$sql = sprintf("INSERT INTO users(name, password,  gender, color) VALUES (
+				'%s','%s','%s', '%s'
 				)", mysqli_real_escape_string($db, $name),
+					mysqli_real_escape_string($db, $hash),
 					mysqli_real_escape_string($db, $gender),
 					mysqli_real_escape_string($db, $color));
 			mysqli_query($db, $sql); // send to database
@@ -73,6 +81,9 @@
 	User name: <input type="text" name="name" value="<?php
 		echo htmlspecialchars($name); // prefilled the form fields
 	?>"><br>
+
+	Password: <input type="password" name="password"><br> <!-- should not prefill the password -->
+
 		Gender:
 		<input type="radio" name="gender" value="f" <?php
 			if ($gender === 'f') {
