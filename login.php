@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP</title>
-</head>
-<body>
 <?php
+	session_start();
+
+	$message = '';
 
 //check if the form has been submitted
 
@@ -20,15 +17,32 @@ if(isset($_POST['name']) && isset($_POST['password'])) {
 		$isAdmin = $row['isAdmin'];
 
 		if (password_verify($_POST['password'], $hash)) {
-			echo 'Login successful.';
+			$message = 'Login successful.';
+
+			$_SESSION['user']=$row['name'];
+			$_SESSION['isAdmin']=$isAdmin;
+
 		} else {
-			echo 'Login failed.';
+			$message = 'Login failed.';
 		}
 	} else {
-		echo 'Login failed.'; // do not tell too much info to the user
+		$message = 'Login failed.'; // do not tell too much info to the user
 	}
 	mysqli_close($db);
 }
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PHP</title>
+</head>
+<body>
+<?php
+readfile('navigation.tmpl.html');
+
+echo "<P>$message</p>";
 
 ?>
 <form method ="post" action="">

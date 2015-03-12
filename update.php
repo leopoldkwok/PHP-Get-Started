@@ -1,4 +1,7 @@
 <?php
+
+	require 'auth.php'; // if the page is not loaded and the validation is not loaded we cannot conitnue
+
 	if(isset($_GET['id']) && ctype_digit($_GET['id'])) {
 		$id = $_GET['id'];
 	} else {
@@ -13,7 +16,7 @@
 <body>
 <?php
 	readfile('navigation.tmpl.html');
-	
+
 	$name = '';
 	$gender = '';
 	$color = '';
