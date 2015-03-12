@@ -15,6 +15,8 @@
 </head>
 <body>
 <?php
+	readfile('navigation.tmpl.html');
+	
 	$db = mysqli_connect('localhost', 'root', '', 'php'); // connect to the db
 	$sql = "DELETE FROM users WHERE id=$id"; //a few cases you do not need to escape line
 	mysqli_query($db, $sql); // execute the query

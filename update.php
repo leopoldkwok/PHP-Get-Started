@@ -12,6 +12,8 @@
 </head>
 <body>
 <?php
+	readfile('navigation.tmpl.html');
+	
 	$name = '';
 	$gender = '';
 	$color = '';

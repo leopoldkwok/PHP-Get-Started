@@ -5,13 +5,18 @@
 </head>
 <body>
 <?php
+	readfile('navigation.tmpl.html');
+
+
+
+
 	$name = '';
-	$password = '';
-	$comments = '';
+	// $password = '';
+	// $comments = '';
 	$gender = '';
-	$tc = '';
+	// $tc = '';
 	$color = '';
-	$languages = array();
+	// $languages = array();
 
 
 
